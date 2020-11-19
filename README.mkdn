@@ -1,37 +1,43 @@
-LineageOS
+Underground-Rom
 ===========
 
 Getting started
 ---------------
 
-To get started with Android/LineageOS, you'll need to get
+To get started with Android/Underground-Rom, you'll need to get
 familiar with [Repo](https://source.android.com/source/using-repo.html) and [Version Control with Git](https://source.android.com/source/version-control.html).
 
-To initialize your local repository using the LineageOS trees, use a command like this:
+Install the build packages:
+===============
+
+Tested on Ubuntu 16.04,16.10,17.04,18.04,18.10,19.04:
+
+```bash
+ sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 ```
-repo init -u git://github.com/LineageOS/android.git -b lineage-18.0
+
+To initialize your local repository using the LineageOS trees, use a command like this:
+```bash
+repo init -u git://github.com/Underground-Rom/android_manifest.git -b eleven
 ```
 Then to sync up:
+================
+```bash
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
-repo sync
-```
-Please see the [LineageOS Wiki](https://wiki.lineageos.org/) for building instructions, by device.
+Compilation of Underground-Rom:
+====================
+
+From root directory of Project, perform following commands in terminal
 
 
-Submitting patches
-------------------
-Patches are always welcome! Please submit your patches via LineageOS Gerrit!
-
-Simply follow our guide on [how to submit patches](https://wiki.lineageos.org/submitting-patch-howto.html).
-
-To view the status of your and others' patches, visit [LineageOS Gerrit Code Review](https://review.lineageos.org/).
-
-
-Buildbot
---------
-
-All supported devices are built weekly and periodically as changes are committed to ensure the source trees remain buildable.
-
-You can view the current build statuses at [LineageOS Jenkins](https://jenkins.lineageos.org/).
-
-Builds produced weekly by the buildbot can be downloaded from [LineageOS downloads](https://download.lineageos.org/).
+```bash
+. build/envsetup.sh
+export SKIP_ABI_CHECKS=true
+export ALLOW_MISSING_DEPENDENCIES=true
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+ccache -M 50G
+export CCACHE_COMPRESS=1
+lunch lineage_<devicecodename>-userdebug
+mka bacon -j$(nproc --all)
