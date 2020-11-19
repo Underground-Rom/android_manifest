@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="underground"
+          fetch="https://github.com/Underground-Rom"
+          revision="refs/heads/eleven" />
+
+  <!-- Framework Repo -->
+  <project path="frameworks/base" name="android_frameworks_base" remote="underground" />
+  <project path="vendor/lineage" name="android_vendor_lineage" remote="underground" />
+  <project path="packages/apps/Underground-Rom" name="android_packages_apps_Underground-Rom" remote="underground" />
+  <project path="system/core" name="android_system_core" remote="underground" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="underground" />
+</manifest>
+
+

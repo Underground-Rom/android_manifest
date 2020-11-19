@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
+  <remote  name="lineage"
+           fetch="https://github.com/LineageOS"
+           review="https://review.lineageos.org/"
+           revision="refs/heads/lineage-18.0" />
+           
   <!-- LineageOS additions -->
   <project path="android" name="LineageOS/android" />
   <project path="device/lineage/atv" name="LineageOS/android_device_lineage_atv" />
@@ -45,7 +50,6 @@
   <project path="packages/overlays/Lineage" name="LineageOS/android_packages_overlays_Lineage" />
   <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" />
   <project path="prebuilts/tools-lineage" name="LineageOS/android_prebuilts_tools-lineage" clone-depth="1" />
-  <project path="vendor/lineage" name="LineageOS/android_vendor_lineage" />
 
   <!-- CodeAurora additions -->
   <project path="device/qcom/sepolicy" name="LineageOS/android_device_qcom_sepolicy" groups="qcom,pdk-qcom" />
